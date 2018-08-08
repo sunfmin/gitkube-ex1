@@ -50,4 +50,19 @@ spec:
       - image: nginx
         imagePullPolicy: Always
         name: app1
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: gitkube-ex1-app1
+  name: gitkube-ex1-app1
+  namespace: default
+spec:
+  ports:
+  - port: 4000
+    protocol: TCP
+    targetPort: 4000
+  selector:
+    run: gitkube-ex1-app1
+  type: LoadBalancer
