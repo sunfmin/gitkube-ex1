@@ -1,0 +1,28 @@
+apiVersion: gitkube.sh/v1alpha1
+kind: Remote
+metadata:
+  creationTimestamp: null
+  name: gitkube-ex1-app1
+  namespace: default
+spec:
+  authorizedKeys:
+  - |
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFe8KMor4iexfKP1GN+TbU7CHTmWDQw5EZ/V4n6+CiHZky5YaegqFYz0KzT4VlUF6horNEGlCIxK5sUtIs44QAT2/S5ehf9Y1O6/lAy22VDmSXIYjj85lQixvFiIW/6OH51O6VxUmddnREMGAhsUsnZQVmmNiJ9ERmY1bCkb/5BJobiuaW5r+zuYxK0GxsmEg6p7N7U3RqYMQe+cF2UPH8PRE4kOE4yOETJh4/0dHXDItFFvhexDUblvilwxyGPuMRwphhBoE4DE8JP1Kzjnhx0O1UTJecd/AmwWLt0aMUBNsDWcWjJBVeOXtaemi+sjwVGPJ4ZB7oIwqoJ9l9w/lX sunfmin@FeliMac.local
+  deployments:
+  - containers:
+    - dockerfile: app1/Dockerfile
+      name: gitkube-ex1
+      path: ./
+    name: gitkube-ex1
+  manifests:
+    helm: {}
+    path: ""
+  registry:
+    credentials:
+      secretKeyRef:
+        key: ""
+      secretRef: gitkube-ex1-regsecret
+    url: registry.theplant-dev.com/sunfmin
+status:
+  remoteUrl: ""
+  remoteUrlDesc: ""
