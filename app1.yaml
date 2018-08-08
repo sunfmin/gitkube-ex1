@@ -1,3 +1,4 @@
+---
 apiVersion: gitkube.sh/v1alpha1
 kind: Remote
 metadata:
@@ -11,9 +12,9 @@ spec:
   deployments:
   - containers:
     - dockerfile: app1/Dockerfile
-      name: gitkube-ex1
+      name: app1
       path: ./
-    name: gitkube-ex1
+    name: gitkube-ex1-app1
   manifests:
     helm: {}
     path: ""
@@ -26,3 +27,27 @@ spec:
 status:
   remoteUrl: ""
   remoteUrlDesc: ""
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: gitkube-ex1-app1
+  name: gitkube-ex1-app1
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      run: gitkube-ex1-app1
+  template:
+    metadata:
+      labels:
+        run: gitkube-ex1-app1
+    spec:
+      imagePullSecrets:
+      - name: gitkube-ex1-regsecret
+      containers:
+      - image: nginx
+        imagePullPolicy: Always
+        name: app1
+

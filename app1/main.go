@@ -5,11 +5,14 @@ import (
 	"html"
 	"log"
 	"net/http"
+	"net/http/httputil"
 )
 
 func main() {
 
 	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
+		b, _ := httputil.DumpRequest(r, true)
+		fmt.Println(string(b))
 		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
 	})
 
