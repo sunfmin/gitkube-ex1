@@ -6,9 +6,12 @@ import (
 	"log"
 	"net/http"
 	"net/http/httputil"
+
+	"github.com/sunfmin/go-cicd-example1/app1/pkg1"
 )
 
 func main() {
+	pkg1.Hello()
 
 	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
 		b, _ := httputil.DumpRequest(r, true)
