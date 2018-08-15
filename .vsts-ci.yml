@@ -1,0 +1,4 @@
+queue: 'Hosted Ubuntu 1604'
+
+steps:
+- task: Go@1

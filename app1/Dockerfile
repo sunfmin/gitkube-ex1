@@ -1,5 +1,5 @@
 FROM registry.theplant-dev.com/sunfmin/openshift-go-app1dep as builder
-WORKDIR /go/src/github.com/sunfmin/gitkube-ex1
+WORKDIR /go/src/github.com/sunfmin/go-cicd-example1
 COPY . .
 COPY ./app1/Dockerfile /
 COPY ./app1/static /app/static
